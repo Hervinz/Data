@@ -3,7 +3,8 @@
 #collection are combind in an only dataset, to be tidied and merged and finally
 #to get interest measure average.
 
-####READING, 
+
+####READING, DONWLOADING AND UNZIPPING FILES
 if(!dir.exists("./DataSmtf")) {dir.create("./DataSmtf")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url = fileUrl, destfile = "./DataSmtf/UCIHAR.zip")
@@ -104,5 +105,6 @@ groupeddf <- cbind(ttdf[,2:3],
                    select(ttdf, contains("std()")))
 
 groupeddf <- tbl_df(groupeddf) %>%
-group_by(nameactivity, subject) %>%
-summarize_if(is.numeric, mean)
+        group_by(nameactivity, subject) %>%
+        summarize_if(is.numeric, mean) %>%
+        print
