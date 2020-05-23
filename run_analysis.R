@@ -1,6 +1,14 @@
+####This code reads a series of files from a URL, which are "data collected 
+#from the accelerometers from the Samsung Galaxy S smartphone". This data sets
+#collection are combind in an only dataset, to be tidied and merged and finally
+#to get interest measure average.
+
+
 if(!dir.exists("/prueba")) {dir.create("DATA")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url = fileUrl, destfile = "UCIHAR.zip")
+
+
 
 ##GUIDE INFO. CONTAINED IN THE EXPERIMENT FILES
 #For each record it is provided:
