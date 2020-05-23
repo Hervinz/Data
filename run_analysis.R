@@ -3,10 +3,11 @@
 #collection are combind in an only dataset, to be tidied and merged and finally
 #to get interest measure average.
 
-
-if(!dir.exists("/prueba")) {dir.create("DATA")}
+####READING, 
+if(!dir.exists("./DataSmtf")) {dir.create("./DataSmtf")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-download.file(url = fileUrl, destfile = "UCIHAR.zip")
+download.file(url = fileUrl, destfile = "./DataSmtf/UCIHAR.zip")
+unzip(zipfile = "./DataSmtf/UCIHAR.zip", exdir = "./DataSmtf")
 
 
 
@@ -23,39 +24,39 @@ download.file(url = fileUrl, destfile = "UCIHAR.zip")
 
 #### DATOS GRUPO DE ENTRENAMIENTO ####
 #Sujeto al cual está asociada cada obervación
-subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+subject_train <- read.table("./DataSmtf/UCI HAR Dataset/train/subject_train.txt")
 
 #Cada uno de los tipos de señales que el teléfono inteligente
 #entrega como datos para calcular la asceleración y velocidad angular.
-x_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+x_train <- read.table("./DataSmtf/UCI HAR Dataset/train/X_train.txt")
 
 #Obervaciones tomadas de cada una de las actividades
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
+y_train <- read.table("./DataSmtf/UCI HAR Dataset/train/y_train.txt")
 
 
 
 #### DATOS GRUPO DE PRUEBA
 #Sujeto al cual está asociada cada obervación
-subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+subject_test <- read.table("./DataSmtf/UCI HAR Dataset/test/subject_test.txt")
 
 #Cada uno de los tipos de señales que el teléfono inteligente
 #entrega como datos para calcular la asceleración y velocidad angular.
-x_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+x_test <- read.table("./DataSmtf/UCI HAR Dataset/test/X_test.txt")
 
 #Obervaciones tomadas de cada una de las actividades 
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt") 
+y_test <- read.table("./DataSmtf/UCI HAR Dataset/test/y_test.txt") 
 
 
 
 ####NOMBRE DE CADA UNA DE LAS 561 SEÑALES DE LAS QUE SE TOMARON DATOS,
 #INCLUYE NUMERACIÓN Y NOMBRE DE LA CARACTERÍSTICA
-features <- read.table("./UCI HAR Dataset/features.txt") 
+features <- read.table("./DataSmtf/UCI HAR Dataset/features.txt") 
 
 
 
 ####CÓDGICO Y NOMBRE DE CADA UNA DE LAS 6 ACTIVIDADES OBSERVADAS
 #INCLUYE NUMERACIÓN Y NOMBRE DE LA ACTIVIDAD
-activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+activity_labels <- read.table("./DataSmtf/UCI HAR Dataset/activity_labels.txt")
 
 
 
