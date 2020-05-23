@@ -1,3 +1,4 @@
+if(!dir.exists("/prueba")) {dir.create("DATA")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 download.file(url = fileUrl, destfile = "UCIHAR.zip")
 
@@ -83,6 +84,16 @@ colnames(activity_labels) <- c("codeactivity", "nameactivity")
 ttdf <- rbind(x_train, x_test)
 
 
-#Fild "activity" with descriptive datas.
+#Merging "activity_labels" with "ttdf".
 library(dplyr)
 ttdf <- merge(activity_labels, ttdf, by = "codeactivity", all.x = TRUE)
+
+
+##Average
+groupeddf <- cbind(ttdf[,2:3],
+                   select(ttdf, contains("mean()")),
+                   select(ttdf, contains("std()")))
+
+groupeddf <- tbl_df(groupeddf) %>%
+group_by(nameactivity, subject) %>%
+summarize_if(is.numeric, mean)
