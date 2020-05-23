@@ -68,11 +68,21 @@ observaciones <- data.frame("features" = dim(features),
 ##Merging Train Data Sets
 colnames(x_train) <- features[,2]
 names(subject_train) <- "subject"
-names(y_train) <- "activity"
+names(y_train) <- "codeactivity"
 x_train <- cbind(subject_train, y_train, x_train)
 
 ##Merging Test Data Sets
 colnames(x_test) <- features[,2]
 names(subject_test) <- "subject"
-names(y_test) <- "activity"
+names(y_test) <- "codeactivity"
 x_test <- cbind(subject_test, y_test, x_test)
+
+
+##Merging Test and Train Data Sets
+colnames(activity_labels) <- c("codeactivity", "nameactivity")
+ttdf <- rbind(x_train, x_test)
+
+
+#Fild "activity" with descriptive datas.
+library(dplyr)
+ttdf <- merge(activity_labels, ttdf, by = "codeactivity", all.x = TRUE)
