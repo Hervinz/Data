@@ -23,58 +23,55 @@ unzip(zipfile = "./DataSmtf/UCIHAR.zip", exdir = "./DataSmtf")
 
 
 
-#### DATOS GRUPO DE ENTRENAMIENTO ####
-#Sujeto al cual está asociada cada obervación
+#### TRAIN DATASET ####
+#Subject corresponding to each of TRAIN observation.
 subject_train <- read.table("./DataSmtf/UCI HAR Dataset/train/subject_train.txt")
 
-#Cada uno de los tipos de señales que el teléfono inteligente
-#entrega como datos para calcular la asceleración y velocidad angular.
+#Each of the types of signals that the smartphone gives
+#as data to calculate the acceleration and angular velocity.
 x_train <- read.table("./DataSmtf/UCI HAR Dataset/train/X_train.txt")
 
-#Obervaciones tomadas de cada una de las actividades
+#Observations taken from each of the activities.
 y_train <- read.table("./DataSmtf/UCI HAR Dataset/train/y_train.txt")
 
 
 
-#### DATOS GRUPO DE PRUEBA
-#Sujeto al cual está asociada cada obervación
+#### TEST DATASET ####
+#Subject corresponding to each of TEST observation.
 subject_test <- read.table("./DataSmtf/UCI HAR Dataset/test/subject_test.txt")
 
-#Cada uno de los tipos de señales que el teléfono inteligente
-#entrega como datos para calcular la asceleración y velocidad angular.
+#Each of the types of signals that the smartphone gives.
+#as data to calculate the acceleration and angular velocity.
 x_test <- read.table("./DataSmtf/UCI HAR Dataset/test/X_test.txt")
 
-#Obervaciones tomadas de cada una de las actividades 
+#Observations taken from each of the activities.
 y_test <- read.table("./DataSmtf/UCI HAR Dataset/test/y_test.txt") 
 
 
 
-####NOMBRE DE CADA UNA DE LAS 561 SEÑALES DE LAS QUE SE TOMARON DATOS,
-#INCLUYE NUMERACIÓN Y NOMBRE DE LA CARACTERÍSTICA
+#### NAME OF EACH OF THE 561 SIGNALS FROM WHICH DATA WAS TAKEN,
+#INCLUDES NUMBERING AND NAME OF THE FEATURE
 features <- read.table("./DataSmtf/UCI HAR Dataset/features.txt") 
 
 
 
-####CÓDGICO Y NOMBRE DE CADA UNA DE LAS 6 ACTIVIDADES OBSERVADAS
-#INCLUYE NUMERACIÓN Y NOMBRE DE LA ACTIVIDAD
+#### CODE AND NAME OF EACH OF THE 6 ACTIVITIES OBSERVED
+#INCLUDES NUMBERING AND NAME OF THE ACTIVITY
 activity_labels <- read.table("./DataSmtf/UCI HAR Dataset/activity_labels.txt")
 
 
 
-#Cantidad filas y columnas por archivo
+#Number of rows and columns per file
 observaciones <- data.frame("features" = dim(features),
                             "actividades" = dim(activity_labels), row.names = c("NRows", "NCols"),
                             "subject_train" = dim(subject_train),
                             "x_train" = dim(x_train), "y_train" = dim(y_train),
                             "subject_test" = dim(subject_test),
                             "x_test" = dim(x_test), "y_test" = dim(y_test))
+print(observaciones)
+
 
 #### MERGING SETS ####
-
-#Tanto para el conjunto de tablas de Train Data, como para el de Test Data
-#se parte de que el orden en que están almacenadas las características "features"
-#en la tabla "activity_labels", se corresponde con el orden en que se presentan
-#las columnas de la tablas "x_test" y "y_test" respectivamente.
 
 ##Merging Train Data Sets
 colnames(x_train) <- features[,2]
