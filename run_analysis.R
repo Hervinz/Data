@@ -107,4 +107,3 @@ groupeddf <- tbl_df(groupeddf) %>%
 
         
 write.table(x = groupeddf, file = "avgdataset.txt", row.name=FALSE, sep = ",")
-
