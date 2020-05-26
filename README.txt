@@ -9,6 +9,8 @@ Windows 10 Pro N - x86_64
 
 This project is carried out as one of the assignments to pass the "Getting and Cleaning Data" course, which is offered on the Corsera platform, and which was designed as part of the specialized program in Data Science by Jeff Leek, Roger D. Peng and  Brian Caffo, who are professors in the Department of Biostatistics at the Johns Hopkins University Bloomberg School of Public Health.
 
+The objective of this assignment is to put into practice the concepts of Tidying, from the transformation of a series of dataframes to finally obtain the averages of some previously grouped fields.
+
 ==================================================================
 
 This GitHub repository contains, in addition to this file (README.txt), the code for the execution of the project and a "CodeBook" where is possible to read a description of the used R code, the variables, the data and the transformations applied to the data.
