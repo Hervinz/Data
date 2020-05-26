@@ -103,5 +103,7 @@ groupeddf <- cbind(ttdf[,2:3],
 
 groupeddf <- tbl_df(groupeddf) %>%
         group_by(nameactivity, subject) %>%
-        summarize_if(is.numeric, mean) %>%
-        print
+        summarize_if(is.numeric, mean)
+
+        
+write.table(x = groupeddf, file = "avgdataset.txt", row.name=FALSE, sep = ",")
